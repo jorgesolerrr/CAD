@@ -6,3 +6,4 @@ class Moodle(BaseMoodle):
         super(Moodle, self).__init__(url, token)
     
     
+    
