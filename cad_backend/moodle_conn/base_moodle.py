@@ -1,8 +1,8 @@
 import json
 from requests import Session
 from requests.exceptions import RequestException
-from tools.helper import make_params
-from tools.exceptions import *
+from ..tools.helper import make_params
+from ..tools.exceptions import *
 
 class BaseMoodle:
     """ Base class for moodle communication

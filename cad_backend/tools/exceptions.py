@@ -19,4 +19,4 @@ class EmptyResponseException(BaseException):
 class NetworkMoodleException(BaseException):
     """Moodle wrapper for network related network error"""
     def __init__(self, exception : Optional[RequestException]):
-        BaseException.__init__(self, "A Network error occurred: " + exception.strerror)
+        BaseException.__init__(self, "A Network error occurred: " + str(exception.strerror))
