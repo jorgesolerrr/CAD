@@ -1,7 +1,8 @@
+from ...moodle_conn.moodle import  Moodle
 from ...moodle_conn.base_moodle import BaseMoodle 
 from .schemas import User
 
-class BaseUser(BaseMoodle):
+class BaseUser(Moodle):
 
     def create_user(self, user : User):
         data = {
@@ -20,5 +21,12 @@ class BaseUser(BaseMoodle):
             "value" : username
         }
         return self.get("core_user_get_users_by_field", **params)
+
+    def get_courses_enrolled(self, userID : int):
+        params = {
+            "userid" : userID,
+            "returnusercount" : 0
+        }
+        return self.get("core_enrol_get_users_courses", **params)
 
     

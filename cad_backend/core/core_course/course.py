@@ -1,13 +1,11 @@
-from ...moodle_conn.base_moodle import BaseMoodle 
+from ...moodle_conn.moodle import  Moodle
+from ...moodle_conn.base_moodle import BaseMoodle
 from .schemas import Course
 
 
 
-class BaseCourse(BaseMoodle):
+class BaseCourse(Moodle):
 
-    def __init__(self, moodle : BaseMoodle):
-        super().__init__(moodle.URL, moodle.TOKEN)
-        
 
     def create_course(self, course : Course):
         data = {
