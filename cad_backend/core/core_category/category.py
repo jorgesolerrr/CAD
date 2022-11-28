@@ -1,6 +1,5 @@
 from ...moodle_conn.moodle import Moodle 
-from .schemas import Category
-
+from ..schemas import Category
 
 class BaseCategory(Moodle):
 
@@ -10,4 +9,4 @@ class BaseCategory(Moodle):
             "categories[0][parent]" : category.parent,
             "categories[0][idnumber]" : category.idnumber
         }
-        return self.post("core_course_create_categories", **data)
+        return self._post("core_course_create_categories", **data)
