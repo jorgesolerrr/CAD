@@ -1,0 +1,245 @@
+{
+    "1": [
+        {
+            "name": "Historia de Cuba",
+            "shortname": "HC",
+            "precedence": [""]
+        },
+        {
+            "name": "Principios, Organizacion y Practica del Turismo",
+            "shortname": "POPTUR",
+            "precedence": [""]
+        },
+        {
+            "name": "Matematica Superior Aplicada a la Economia",
+            "shortname": "MSAE",
+            "precedence": [""]
+        },
+        {
+            "name": "Filosofia",
+            "shortname": "F",
+            "precedence": [""]
+        },
+        {
+            "name": "Panorama de la Historia Universal",
+            "shortname": "PHU",
+            "precedence": [""]
+        },
+        {
+            "name": "Informatica",
+            "shortname": "I",
+            "precedence": [""]
+        },
+        {
+            "name": "Economia Politica",
+            "shortname": "EP",
+            "precedence": [""]
+        },
+        {
+            "name": "Modalidades Turisticas",
+            "shortname": "MT",
+            "precedence": [
+                "POPTUR",
+                "HP"
+            ]
+        },
+        {
+            "name": "Investigacion Cientifica en Turismo",
+            "shortname": "ICT",
+            "precedence": [
+                "MSAE",
+                "EAT"
+            ]
+        },
+        {
+            "name": "Contabilidad Financiera",
+            "shortname": "CF",
+            "precedence": [""]
+        },
+        {
+            "name": "Direccion y Estrategia",
+            "shortname": "DE",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Calidad",
+            "shortname": "GC",
+            "precedence": [""]
+        },
+        {
+            "name": "Introduccion al Derecho Turistico",
+            "shortname": "IDT",
+            "precedence": [
+                "POPTUR",
+                "HP",
+                "MT",
+                "ET"
+            ]
+        },
+        {
+            "name": "Teoria Politica",
+            "shortname": "TP",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Alojamientos",
+            "shortname": "GA",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Restauracion",
+            "shortname": "GR",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Agencias de Viajes",
+            "shortname": "GAV",
+            "precedence": [
+                "DE",
+                "CT"
+            ]
+        },
+        {
+            "name": "Relaciones Publicas en Turismo",
+            "shortname": "RRPP",
+            "precedence": [""]
+        },
+        {
+            "name": "Emprendimiento Turistico",
+            "shortname": "EMPT",
+            "precedence": [""]
+        },
+        {
+            "name": "Direccion Integrada y Evaluacion de Proyectos",
+            "shortname": "DIEP",
+            "precedence": [""]
+        }
+    ],
+    "2": [
+        {
+            "name": "El Turismo en la Historia de Cuba",
+            "shortname": "THC",
+            "precedence": [
+                "HC"
+            ]
+        },
+        {
+            "name": "La Hospitalidad y los Procesos",
+            "shortname": "HP",
+            "precedence": [
+                "POPTUR"
+            ]
+        },
+        {
+            "name": "Estadistica Aplicada al Turismo",
+            "shortname": "EAT",
+            "precedence": [
+                "MSAE"
+            ]
+        },
+        {
+            "name": "Geografia Turistica y Patrimonio Natural",
+            "shortname": "GTPN",
+            "precedence": [""]
+        },
+        {
+            "name": "Patrimonio Cultural de Cuba",
+            "shortname": "PCC",
+            "precedence": [""]
+        },
+        {
+            "name": "Comunicacion Interpersonal",
+            "shortname": "CI",
+            "precedence": [""]
+        },
+        {
+            "name": "Seguridad y Defensa Nacional",
+            "shortname": "SDN",
+            "precedence": [""]
+        },
+        {
+            "name": "Economia Turistica",
+            "shortname": "ET",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Recursos de Informacion en el Turismo",
+            "shortname": "GRIT",
+            "precedence": [
+                "MSAE",
+                "EAT",
+                "ICT"
+            ]
+        },
+        {
+            "name": "Matematica Financiera",
+            "shortname": "MF",
+            "precedence": [
+                "CF"
+            ]
+        },
+        {
+            "name": "Comercializacion Turistica",
+            "shortname": "CT",
+            "precedence": [
+                "DE"
+            ]
+        },
+        {
+            "name": "Gestion de Recursos Humanos",
+            "shortname": "GRH",
+            "precedence": [""]
+        },
+        {
+            "name": "Tecnicas de Guiar",
+            "shortname": "TG",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Destinos Turistico",
+            "shortname": "GDT",
+            "precedence": [
+                "POPTUR",
+                "HP",
+                "MT",
+                "ET",
+                "IDT"
+            ]
+        },
+        {
+            "name": "Gestion de Entidades de Ocio",
+            "shortname": "GEO",
+            "precedence": [
+                "MSAE",
+                "EAT",
+                "ICT",
+                "GRIT",
+                "GA"
+            ]
+        },
+        {
+            "name": "Comercio de Productos",
+            "shortname": "CP",
+            "precedence": [""]
+        },
+        {
+            "name": "Gestion de Transportes Turisticos",
+            "shortname": "GTT",
+            "precedence": [
+                "DE",
+                "CT",
+                "GAV"
+            ]
+        },
+        {
+            "name": "Emprendimiento Turistico",
+            "shortname": "EMPT",
+            "precedence": [""]
+        },
+        {
+            "name": "Direccion Integrada y Evaluacion de Proyectos",
+            "shortname": "DIEP",
+            "precedence": [""]
+        }
+    ]
+}

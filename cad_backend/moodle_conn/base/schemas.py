@@ -19,4 +19,9 @@ class Course :
 class Category:
     name : str
     idnumber : str
-    parent: Optional[str]
+    parent: Optional[int] = 0
+
+@dataclass
+class Enroll:
+    userID : int
+    courseID : int

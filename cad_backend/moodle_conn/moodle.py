@@ -1,10 +1,7 @@
-from .base_moodle import BaseMoodle
-from ..core.core_user.user import BaseUser
-from ..core.core_category.category import BaseCategory
-from ..core.core_course.course import BaseCourse
-from ..tools.decorators import lazy
-
-class Moodle(BaseMoodle):
+from .moodleConn import MoodleConn
+from .base import BaseCategory, BaseUser, BaseCourse, BaseEnroll
+from ..tools import lazy
+class Moodle(MoodleConn):
     
     def __init__(self, url : str, token : str):
         super().__init__(url, token)
@@ -13,6 +10,7 @@ class Moodle(BaseMoodle):
     @lazy
     def course(self) -> BaseCourse:
         return BaseCourse(self)
+        
     
     @property
     @lazy
@@ -22,7 +20,12 @@ class Moodle(BaseMoodle):
     @property
     @lazy
     def category(self) -> BaseCategory:
-        return BaseCategory(self)
+         return BaseCategory(self)
+    
+    @property
+    @lazy
+    def enroll(self) -> BaseEnroll:
+        return BaseEnroll(self)
     
     
 
