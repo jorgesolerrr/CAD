@@ -1,0 +1,54 @@
+<Dashboard>:
+    name: "dashboard"
+    
+    MDTopAppBar:
+        id: toolbar
+        title: "CAD Dashboard"
+        size_hint_y: .1
+        pos_hint: {'top': 1}
+        halign: "center"
+        elevation: 5
+        left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+        right_action_items: [["home", lambda x: app.logout(x)]]
+        
+    MDNavigationLayout:
+        x : toolbar.height
+        ScreenManager:
+            id: screen_manager
+
+            Screen: 
+                name: "main"
+                MDLabel:
+                    text: "Select a screen from navigation bar at top-left corner"
+                    halign: "center"
+            Students:
+            Exam:
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            ContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+
+<ContentNavigationDrawer>:
+
+    ScrollView:
+        MDList:
+            OneLineIconListItem:
+                text: "students"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "students"
+                IconLeftWidget:
+                    icon: "account-multiple"
+
+            OneLineIconListItem:
+                text: "Exam"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "Exam"
+                
+                IconLeftWidget:
+                    icon: "school"
+

@@ -6,19 +6,22 @@ class BaseUser(MoodleCore):
 
     def create_user(self, user : User):
         data = {
+            "users[0][createpassword]" : 1,  
             "users[0][username]" : str(user.username),
+            "users[0][password]" : "Cad.2020",
             "users[0][firstname]" : user.firstname,
             "users[0][lastname]" : user.lastname,
             "users[0][email]" : user.email if user.email is not None else f"{str(user.username)}@email.com",
-            "users[0][createpassword]" : 1,  
-            "users[0][password]" : "Cad.2020"
         }
-        return self.moodle._post("core_user_create_users", **data)
+        try:
+            return self.moodle._post("core_user_create_users", **data)
+        except:
+            return self.get_user_by_username(str(user.username))
 
     def get_user_by_username(self, username : str):
         params = {
             "field" : "username",
-            "value" : username
+            "values[0]" : username
         }
         return self.moodle._get("core_user_get_users_by_field", **params)
 

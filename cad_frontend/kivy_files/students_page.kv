@@ -1,0 +1,87 @@
+<IconListItem>
+    IconLeftWidget:
+        icon: root.icon
+
+<Students>:    
+    name: "students"
+    data_students: data_students
+    buttton_panel: buttton_panel
+    search_course: text_field
+    drop: drop
+    search_fullname:  search_fullname
+    check_fullname: check_fullname
+
+    MDGridLayout:
+        id : data_students
+        cols:2
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint: .9, .7
+
+        MDGridLayout:
+            id : buttton_panel
+            cols:1
+            size_hint: .5, .2
+            pos_hint: {'top': 1}
+
+            MDRectangleFlatIconButton:
+                icon: "upload"
+                text: "Upload students to CAD"
+                pos_hint: {'center_x': 0.0,'center_y': 0.4}
+                size_hint_x: None
+                size_hint_y: None
+                width: "300dp"
+                height: text_field.height
+                on_release: root.open_file_manager()
+
+            MDRelativeLayout:
+                size_hint_x: None
+                size_hint_y: None
+                width: "300dp"
+                height: text_field.height
+
+                MDTextField:
+                    id: text_field
+                    hint_text: "search by course"
+                    icon_left: "school"
+
+                MDIconButton:
+                    id : drop
+                    icon:"arrow-down-box"
+                    pos_hint: {"center_y": .5}
+                    pos: text_field.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        root.createDrop()
+                        root.dropCourses()
+            
+            
+            
+            MDRelativeLayout:
+                size_hint_x: None
+                size_hint_y: None
+                width: "300dp"
+                height: search_fullname.height
+
+                MDTextField:
+                    id: search_fullname
+                    hint_text: "search by fullname"
+                    icon_left: "school"
+
+                MDIconButton:
+                    id : check_fullname
+                    icon:"check-bold"
+                    pos_hint: {"center_y": .5}
+                    pos: search_fullname.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        root.get_next_courses()
+
+
+
+            
+            Widget:
+
+        
+
+
+            

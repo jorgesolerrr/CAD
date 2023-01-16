@@ -1,0 +1,34 @@
+ScreenManager:
+    Login:
+    Dashboard:
+
+<Login>:
+    name: "login"
+    course : course
+    token : token
+    MDTextField:
+        id: course
+        hint_text: "Enter a course`s period"
+        helper_text: "like: 2022-2023"
+        helper_text_mode: "on_focus"
+        pos_hint: {'center_x': 0.5,'center_y': 0.6}
+        size_hint_x: None
+        width: 300
+
+    MDTextField:
+        id: token
+        hint_text: "Enter your token"
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint_x: None
+        width: 300
+    
+    MDRectangleFlatIconButton:
+        text: "Submit"
+        icon: "login"
+        pos_hint: {'center_x': 0.5,'center_y': 0.4}
+        on_release: 
+            app.root.current = "dashboard" if root.Submit() else "login"
+            root.manager.transition.direction = "left"
+
+
+

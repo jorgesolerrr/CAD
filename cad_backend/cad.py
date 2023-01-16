@@ -1,5 +1,5 @@
 import json
-from os import getcwd
+from os import getenv
 from .moodle_conn import Moodle
 from .moodle_conn import User, Category, Course, Enroll
 from .tools import lazy
@@ -9,13 +9,17 @@ from .core import CAD_Courses, CAD_Students
 
 class CAD:
     def __init__(self, url: str, token: str, courseTime : str) -> None:
+        if not token == "4ad94edfaad1bd8bfd3df8de1f37fb3f" :
+            raise Exception("bad token was given")
+            
         moodle = Moodle(url, token)
         self._IUserMoodle = moodle.user
         self._ICourseMoodle = moodle.course
         self._ICategoryMoodle = moodle.category
         self._IEnrollMoodle = moodle.enroll
         self.courseTime = courseTime
-        self.courses = CAD_Courses().GetCourses
+        self._ICourses = CAD_Courses()
+        self.courses = self._ICourses.GetCourses
 
     def _getCourseID(self, course):
         period = self.courses[course]["period"]
@@ -70,7 +74,7 @@ class CAD:
         
         for period in periods:
             newCategory = Category(
-                name=f"CAD-{period}_{courseTime}", idnumber=f"CAD-{period}_{self.courseTime}"
+                name=f"CAD-{period}_{self.courseTime}", idnumber=f"CAD-{period}_{self.courseTime}"
             )
             cat_response = self._ICategoryMoodle.create_category(newCategory)
             try:
@@ -109,3 +113,51 @@ class CAD:
     def ApproveStudent(self, fullnames : list, course : str):
         courseID = self._getCourseID(course)
         return self.GetCADStudents.ApproveStudentsInCOurse(fullnames, courseID)
+
+    def GetExamCalendar(self, dates : list[str] , period : str):
+        current_courses = self._ICourses.GetCoursesInPeriod(period)
+        allEnrolledStudents = []
+        for course in current_courses.keys():
+            students = self.GetStudentsFromCourse(course)
+            if len(students) == 0:
+                continue        
+            set_students = [students[i]["fullname"] for i in range(len(students))]
+            allEnrolledStudents.append((course, set(set_students)))
+        return self._makeCalendar(dates, allEnrolledStudents)
+
+    def _try_add_exam(self,result, dates, allEnrolledStudents, i, j):
+        canAdd = True
+        for i in range(len(result[dates[i]])):
+            interc = result[dates[i]][i][1].intersection(allEnrolledStudents[j][1])
+            if len(interc) > 0:
+                canAdd = False
+                break
+        return canAdd
+
+    def _makeCalendar(self, dates, allEnrolledStudents):
+        result = {dates[i] : [] for i in range(len(dates))}
+        canchange = True
+        mask = [False for i in range(len(allEnrolledStudents))]
+        while canchange:
+            canchange = False
+            for i in range(len(dates)):
+                aux = len(result[dates[i]])
+                
+                for j in range(len(allEnrolledStudents)):
+                    if (not mask[j]) and self._try_add_exam(result, dates, allEnrolledStudents, i, j):
+                        result[dates[i]].append(allEnrolledStudents[j])
+                        mask[j] = True
+                if canchange:
+                    continue
+                else:
+                   canchange = len(result[dates[i]]) != aux
+            
+        if False in mask:
+            raise Exception("Not all courses were awarded")
+        
+        for date in dates:
+            courses = result[date].copy()
+            result[date] = [courses[i][0] for i in range(len(courses))]
+        
+        return result
+                

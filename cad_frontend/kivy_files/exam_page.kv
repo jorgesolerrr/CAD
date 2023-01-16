@@ -1,0 +1,26 @@
+<Exam>
+    name: "Exam"
+    data_period : period
+    date_picker : date_picker
+    exam_box : exam_box
+    MDBoxLayout:
+        id: exam_box
+        orientation: 'vertical'
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint: 0.5, 0.8
+        spacing: "24dp"
+    
+        MDTextField:
+            id: period
+            hint_text: "Enter period"
+            helper_text: "like: 1"
+            helper_text_mode: "on_focus"
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint_x: None
+            width: 300
+
+        MDRaisedButton:
+            id : date_picker
+            text : "Chose the dates"
+            pos_hint: {'center_x': 0.5,'center_y': 0.4}
+            on_release: root.show_date_picker()

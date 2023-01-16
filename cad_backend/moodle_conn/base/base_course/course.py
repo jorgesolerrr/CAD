@@ -33,7 +33,7 @@ class BaseCourse(MoodleCore):
         params = {
             "courseid" : courseID,
             "options[0][name]" : "userfields",
-            "options[0][value]" : "username, fullname"
+            "options[0][value]" : "username, fullname, lastname, email"
         }
         return self.moodle._get("core_enrol_get_enrolled_users", **params)
 
